@@ -7,6 +7,10 @@
       label: 'Docs'
     },
     {
+      href: '/articles',
+      label: 'Articles'
+    },
+    {
       href: '/apps',
       label: 'Sample Apps'
     }  
@@ -18,9 +22,7 @@
     await tick()
   })
 </script>
-{#if navLinks.length == 2}
-  {@const cols = `grid grid-cols-3`}
-  <main class="{cols} place-items-end gap-2">
+  <main class="grid grid-cols-4 place-items-end gap-2 mb-4">
     {#each navLinks as navLink, idx (`${idx}_${navLink.href}`)}
     {@const c=$page.url.pathname.includes(navLink.href) && 'bg-indigo-500 rounded-full text-white'}
     <a 
@@ -32,7 +34,6 @@
   {/each}
   <a href="/contact" id="contact" class="text-center bg-indigo-900 text-gray-100 rounded-full w-24">Contact Us</a>
 </main>
-{/if}
 
 <style>
   .current {
