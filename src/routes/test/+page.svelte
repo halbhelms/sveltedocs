@@ -1,6 +1,9 @@
 <script>
   import { cart } from '$lib/store/stores'
   import { count } from '$lib/store/stores'
+  
+  import ST from '$lib/components/page-elements/PageSubTitle.svelte'
+  import T from '$lib/components/page-elements/PageTitle.svelte'
 
   // let countValue
   // cart.subscribe()
@@ -34,6 +37,7 @@
     count.update(prev => prev+1)
   }
 </script>
+
 Items in Cart: {$cart.length}
 
 <p on:click={addToCart}>Add item to cart</p>
@@ -41,7 +45,7 @@ Items in Cart: {$cart.length}
 <p>Count: {$count}</p>
 <p on:click={addToCount}>Add 1 to count</p>
 
-<hr>
+<ST subtitle="Examples of Dynamic Loading" />
 <div class="grid lg:grid-cols-3 gap-10">
 <p on:click={() => loadDynamicComponent('a', 'Hatem')}>Let Hatem dynamically load ComponentA</p>
 <p on:click={() => loadDynamicComponent('b', 'Hal')}>Let Hal dynamically load ComponentB</p>

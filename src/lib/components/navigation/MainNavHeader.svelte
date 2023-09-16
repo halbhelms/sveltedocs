@@ -3,12 +3,16 @@
   import { page } from '$app/stores'
   const navLinks = [
     {
+      href:"/",
+      label: "SvelteInfo"
+    },
+    {
       href: '/docs',
-      label: 'Docs'
+      label: 'Explainers'
     },
     {
       href: '/articles',
-      label: 'Articles'
+      label: 'Tutorials'
     },
     {
       href: '/apps',
@@ -22,7 +26,7 @@
     await tick()
   })
 </script>
-  <main class="grid grid-cols-4 place-items-end gap-2 mb-4">
+  <main class="grid grid-cols-5 place-items-end gap-2 my-2 font-semibold">
     {#each navLinks as navLink, idx (`${idx}_${navLink.href}`)}
     {@const c=$page.url.pathname.includes(navLink.href) && 'bg-indigo-500 rounded-full text-white'}
     <a 
@@ -32,7 +36,7 @@
     {navLink.label}
   </a>
   {/each}
-  <a href="/contact" id="contact" class="text-center bg-indigo-900 text-gray-100 rounded-full w-24">Contact Us</a>
+  <a href="/contact" id="contact" class="text-center bg-indigo-900 text-gray-100 rounded-full w-24">Consulting</a>
 </main>
 
 <style>

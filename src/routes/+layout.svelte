@@ -3,8 +3,7 @@
   import MainNavHeader from '$lib/components/navigation/MainNavHeader.svelte'
 </script>
 
-<main class="antialiased grid grid-cols-header font-['Roboto Condensed'] gap-2 my-4 mx-4 bg-gray-200 pt-4 px-4">
-  <div>Welcome to SvelteDocs</div>
+<main class="antialiased  font-['Roboto Condensed'] gap-2 w-full  bg-gray-200 py-1 pr-4">
   <div>
     <MainNavHeader />
   </div>
