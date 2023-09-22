@@ -15,6 +15,10 @@
       label: 'Tutorials'
     },
     {
+      href: '/recipes',
+      label: 'Recipes'
+    },
+    {
       href: '/apps',
       label: 'Sample Apps'
     }  
@@ -26,7 +30,7 @@
     await tick()
   })
 </script>
-  <main class="grid grid-cols-5 place-items-end gap-2 my-2 font-semibold">
+  <main class="grid grid-cols-6 place-items-end gap-2 my-2 font-semibold">
     {#each navLinks as navLink, idx (`${idx}_${navLink.href}`)}
     {@const c=$page.url.pathname.includes(navLink.href) && 'bg-indigo-500 rounded-full text-white'}
     <a 

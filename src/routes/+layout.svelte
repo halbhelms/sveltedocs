@@ -3,7 +3,7 @@
   import MainNavHeader from '$lib/components/navigation/MainNavHeader.svelte'
 </script>
 
-<main class="antialiased  font-['Roboto Condensed'] gap-2 w-full  bg-gray-200 py-1 pr-4">
+<main class="antialiased  font-['Roboto Condensed'] gap-2 w-full mx-0 bg-gray-200 py-1 pr-4">
   <div>
     <MainNavHeader />
   </div>

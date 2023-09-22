@@ -11,4 +11,9 @@
   html {
     font-family: Roboto Condensed
   }
+
+  code {
+    color: purple;
+    font-size: 0.9rem;
+  }
 }

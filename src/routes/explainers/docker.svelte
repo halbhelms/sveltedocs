@@ -1,6 +1,6 @@
 <script>
   import PageTitle from '$lib/components/page-elements/PageTitle.svelte'
-  import SeeMoreLink from '$lib/components/page-elements/SeeMoreLink.svelte' 
+  import SeeMoreLink from '$lib/components/page-elements/SeeMoreLink.svelte'
 </script>
 
 <PageTitle title="Docker Containers" />
