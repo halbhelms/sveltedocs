@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   export let data;
-  console.log(data.explainer.main_component)
+  const { explainer } = data
   let DynamicComponent
 
   onMount( async () => {
