@@ -84,6 +84,45 @@ As we saw when looking at forms ( <SeeMoreLink linkedText="Form Actions" /> ), w
 <CodeSnippet code="  export let data;
   const &#123; explainer } = data" />
 
+<p class="my-2">Often, you'll find that you'll receive from <code>+page.server.js</code> an object containing a number of name/value pairs. Sometimes, the <code>+page.svelte</code> file plans to pass these into a separate component that it imports and uses. While you can pass each name/value pair individually, you can also <i>spread</i> the object. Let's see how we could do this given...</p>
+
+<ul class="list-disc list-inside">
+  <li>a <code>+page.server.js</code> file that returns an object with properties of <code>productId</code>, <code>productName</code>, <code>price</code>, and <code>qty</code></li>
+  <li>a <code>+page.svelte</code> file that uses a component, <code>ProductDetails.svelte</code></li>
+  <li>a <code>ProductDetails.svelte</code> file that declares that it requires, as props, <code>productId</code>, <code>productName</code>, <code>price</code>, and <code>qty</code> </li>
+</ul>
+
+<p class="my-2">
+Here's how our code might look if we opt to spread props.
+</p>
+<CodeSnippetHeader text="+page.server.js" />
+<CodeSnippet code="export async function load() &#123;
+  return &#123;
+    productInfo: &#123;
+      productId: 'BR33982-39cjm',
+      productName: 'Apple Vision Pro',
+      price: 3500,
+      qty: 274
+    }
+  };
+};" />
+
+<CodeSnippetHeader text="+page.svelte" />
+<CodeSnippet code="<script>
+  import ProductDetail from '$lib/components/ProductDetail.svelte' // or wherever your component is located
+  export let data
+  const &#123; productInfo } = data
+</script>
+
+<ProductDetail &#123;...productInfo} />" />
+
+<CodeSnippetHeader text="ProductDetail.svelte" />
+<CodeSnippet code="<script>
+  export let productId
+  export let productName
+  export let price
+  export let qty
+</script>" />
 <p class="my-2">
 We have only one last item to cover: what if a required prop is <i>not</i> passed in? We can use this syntax to declare a <i>default</i> value for that prop. Going back to our <code>GreetingComponent</code>, it would look like this:
 </p>

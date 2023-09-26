@@ -1,6 +1,7 @@
 <script>
-	import { invalidateAll } from '$app/navigation';
   import PageTitle from '$lib/components/page-elements/PageTitle.svelte'
+  import Credit from '$lib/components/page-elements/Credit.svelte'
+  import ExternalResource from '$lib/components/page-elements/ExternalResource.svelte'
   import Next from '$lib/components/page-elements/Next.svelte'
   import Prev from '$lib/components/page-elements/Prev.svelte'
   import CodeSnippet from '$lib/components/CodeSnippet.svelte'
@@ -136,7 +137,42 @@ The idea is that if you click the Delete button, the form will be submitted to <
 </p>
 
 <p class="my-2">
-And that works. But, whew &mdash; it's ugly. We could have dozens of forms on that one page. Let's see how we can improve the code using both <code>submitter</code> and <code>formData</code>.
+And that works. But, whew &mdash; it's ugly. We could have dozens of forms on that one page. Let's see how we can improve the code using both <code>submitter</code> and <code>formData</code>. 
+</p>
+
+<CodeSnippetHeader text="+page.svelte" />
+<CodeSnippet code="<script>
+  import &#123; enhance } from '$app/forms'
+  export let data
+  const composers = &#123; data }
+</script>
+
+<form method='POST' class='border mx-auto w-[900px]' use:enhance=&#123;(&#123; formData, submitter }) => &#123;
+  formData.set('composerId', submitter.name)
+  return async (&#123; result, update }) => &#123;update()}
+  }}>
+  
+  <ul>
+  &#123;#each composers as composer (composer.id)}
+    <li><button name=&#123;composer.id}>Delete</button> &#123;composer.name} :: &#123;composer.genre}</li>
+  &#123;/each}
+  </ul>
+</form>"/>
+
+<p class="my-2">
+What's going on? Gone are the <code>form</code> tags that wrapped the <code>button</code>. In its place, the <code>button</code> tag has been given a <code>name</code> property, whose value is the <code>composer.id</code>. Why did we do that?
+</p>
+
+<p class="my-2">
+Look at line 8. Remember that this code is going to execute immediately <i>before</i> the form is submitted. And what causes the form to be submitted? A click on one of the buttons. When a button is clicked, we add a property, <code>composerId</code>, to <code>formData</code> giving it a value of the <code>submitter.name</code>. In our case the <code>submitter.name</code> is the <code>composer.id</code> attached to the clicked button. Thanks to <code>use:enhance</code>, we are able to remove those potential dozens of <code>form</code> elements.
+</p>
+
+<p class="my-2">
+There's more we could do with <code>use:enhance</code>. For example, we could do some client-side form validation and, if validation fails, call the <code>cancel</code> function to prevent form submission. And there's much more we might do.
+</p>
+
+<p class="my-2">
+One final note: <code>use:enhance</code> is not a unique, somewhat-strange-looking syntax. <code>enhance</code> is a Svelte <i>action</i>. Actions (these are not <i>form</i> actions) are functions that are called when an HTML element is created. In addition to the built-in ones like <code>enhance</code>, you can create your own. Hopefully, this Explainer has piqued your interest in them. <SeeMoreLink linkedText="Svelte actions" />
 </p>
 
 </main>
