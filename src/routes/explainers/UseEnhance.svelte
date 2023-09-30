@@ -97,6 +97,9 @@ What about this? We might create a "marketing URL" that links to a normal route.
 <CodeSnippet code="use:enhance=&#123;(&#123; formElement, formData, action, cancel, submitter }) => &#123;
   formData.set('referrer', 'March Madness campaign')
   // etc.
+  return async (&#123; update }) => &#123;
+		await update();
+	};
 }}" />
 
 <p class="my-2">
@@ -149,7 +152,9 @@ And that works. But, whew &mdash; it's ugly. We could have dozens of forms on th
 
 <form method='POST' class='border mx-auto w-[900px]' use:enhance=&#123;(&#123; formData, submitter }) => &#123;
   formData.set('composerId', submitter.name)
-  return async (&#123; result, update }) => &#123;update()}
+  return async (&#123; update }) => &#123;
+	await update();
+  };
   }}>
   
   <ul>
