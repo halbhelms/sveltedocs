@@ -21,8 +21,10 @@
 <p class="first-line:uppercase first-line:tracking-wide first-line:text-xs
   first-letter:text-7xl first-letter:font-bold first-letter:text-slate-900
   first-letter:mr-[2px] first-letter:float-left mb-1 first-letter:mt-[-6px]">
-One important, if confusing, feature of slots is so-called <i>slot props.</i> This is an area where a demonstration &mdash; even a highly contrived one &mdash; is essential to understanding.
+Slot fallbacks are very simple &mdash; they answer the question "What should we do if no component children are sent to a slot that expects something?" A more confusing feature of slots is so-called <i>slot props.</i> This is an area where a demonstration &mdash; even a highly contrived one &mdash; is essential to understanding. Let's tackle that first.
 </p>
+
+<PageSubTitle subtitle="Slot Props" />
 
 <p class="my-2">
 Let's first look at a component called <code>AuthorList</code>.
@@ -96,8 +98,37 @@ Import the <code>AuthorList</code> component.
 Begin calling <code>AuthorList</code>...
 </WalkThru>
 <WalkThru lineNumber="7">
-OK, this is where we specify the component children within a named slot. But we've never seen anything like <code>let:firstName</code> or <code>let:lastName</code> before. That's because this syntax is only used in prop slots. This is a declaration that states that the calling code expects to be passed two variables: <code>firstName</code> and <code>lastName</code>. And where are these variables being passed from? Cast your eyes up to lines 17 and 18 of our <code>AuthorList</code> code. <code>AuthorList</code> is <i>passing</i> <code>firstName</code> and <code>lastName</code>. And <code>+page.svelte</code> is <i>receiving</i> <code>firstName</code> and <code>lastName</code>. "But wait!", you interject. "<code>AuthorList</code> actually passed <i>three</i> name/value pairs. What happened to <code>genre</code>?" In this case, <code>+page.svelte</code> chose not to use it.
+OK, this is where we specify the component children within a named slot. But we've never seen anything like <code>let:firstName</code> or <code>let:lastName</code> before. That's because this syntax is only used in prop slots. This is a declaration that states that the calling code expects to be passed two variables: <code>firstName</code> and <code>lastName</code>. And where are these variables being passed from? Cast your eyes up to lines 17 and 18 of our <code>AuthorList</code> code. <code>AuthorList</code> is <i>passing</i> <code>firstName</code> and <code>lastName</code>. And <code>+page.svelte</code> is <i>receiving</i> <code>firstName</code> and <code>lastName</code>. This is the kind of insightful info you only get from SvelteInfo. And, now, we can&mdash; 
+
+<p class="py-2 italic">"But wait!", <span class="not-italic">you interject.</span> "<code>AuthorList</code> actually passed <i>three</i> name/value pairs. What happened to <code>genre</code>?" </p>
+
+<p class="my-2">In this case, <code>+page.svelte</code> chose not to use it. Of course&mdash; </p>
+
+<p class="my-2 italic">  "Excuse me again," <span class="not-italic">you rudely interrupt.</span> "If the component is passing all three of the properties of an author, couldn't it pass the entire author as an object?"</p>
+
+<p class="my-2">I suppose...</p>
+
+<p class="my-2 italic">"I'm sorry. Was that a 'Yes'?"</p>
+
+<p class="my-2">Yes, now can we get on to line 8?</p>
 </WalkThru>
 
+<WalkThru lineNumber=8>
+  The <code>&#123;lastName}, &#123;firstName}</code> (along with the wrapping <code>h3</code> tags) are the component children being sent to the component. And they rely on the component first sending <i>us</i> data to use.
+</WalkThru>
+
+<PageSubTitle subtitle="Slot Fallbacks" />
+<p class="my-2"><i>Slot fallbacks</i> are the slot version of a default value for props: content meant to be used if no content was passed to us.</p>
+
+<CodeSnippetHeader text="Slot fallback" />
+<CodeSnippet code="<slot>
+  We cannot find your account information. If you have an Account Manager, please contact them.
+</slot>" />
+
+<p class="my-2">If no information was sent to the slot, we have a default sentence to display.</p>
+
+<p class="my-2"><span class="text-2xl">😞</span> You know, going back to slot props, sending the entire <code>author</code> object actually is better. Let's try it that way next.</p>
+
+<Next nextText="Slot props: a Better Way" nextLink="slot-props-2" />
 
 </main>

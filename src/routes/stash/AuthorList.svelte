@@ -11,6 +11,6 @@
 
 <div class="ml-8 mt-8">
   {#each authors as author (`${author.firstName_author.lastName}`)}
-    <h3> <slot name="author" firstName={author.firstName} lastName={author.lastName} genre={author.genre}/> </h3>
+    <h3> <slot name="author" author={author}/> </h3>
   {/each}
 </div>

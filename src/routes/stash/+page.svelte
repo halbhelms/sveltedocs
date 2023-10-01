@@ -1,11 +1,17 @@
 <script>
-  import AuthorList from './AuthorList.svelte'
+  import StunningCard from './StunningCard.svelte'
 </script>
 
+
+
 <main>
-  <AuthorList>
-    <h3 slot='author' let:firstName let:lastName>
-      {lastName}, {firstName}
-    </h3>
-  </AuthorList>
+  <StunningCard>
+    <svelte:fragment slot="header">
+      Wolfgang Amadeus Mozart
+    </svelte:fragment>
+
+    <svelte:fragment slot="content">
+      Symphonies: 41
+    </svelte:fragment>
+  </StunningCard>
 </main>
