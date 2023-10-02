@@ -9,7 +9,10 @@ export const actions = {
 
 export const load = async ( request ) => {
   return {
-    customerType: request.url.searchParams.get('type')
+    customer: {
+      name: 'Hal Helms',
+      status: 200
+    }
     
   }
 }
