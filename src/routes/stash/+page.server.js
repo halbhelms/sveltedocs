@@ -8,6 +8,8 @@ export const actions = {
 }
 
 export const load = async ( request ) => {
+  console.log('in load')
+  // console.log(request)
   return {
     customer: {
       name: 'Hal Helms',

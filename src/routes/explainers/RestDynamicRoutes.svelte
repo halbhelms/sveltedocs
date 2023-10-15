@@ -28,6 +28,8 @@ If we are not overly fond of <SeeMoreLink linkedText="Route Matchers" />, we pos
 Take a URL like this: <code>svelteinfo.com/producs/residential/kitchen/gadgets/new/on-sale</code>. (Pesonally, we think if you devise URLs like this, there should be...consequences.)
 </p>
 
+
+
 <img src="../bad-dog.png" alt="bad dog" width=300>
 
 <p class="my-2">

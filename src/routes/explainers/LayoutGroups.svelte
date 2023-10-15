@@ -35,5 +35,5 @@ The <code>+layout.svelte</code> file's layout will be applied to all folders und
 </p>
 
 <Prev prevLink="rest-routes-dynamic" prevText="Dynamic Rest Routes" />
-
+<Next nextLink="breaking-out-of-layouts" nextText="Breaking Out of Layouts" />
 </main>
