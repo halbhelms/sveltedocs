@@ -47,7 +47,7 @@ We sneakily neglected to mention that, as presented, a full page reload would oc
 <CodeSnippetHeader text="+page.svelte" />
 <CodeSnippet code="use:enhance=&#123;(&#123; formElement, formData, action, cancel, submitter }) => &#123;
 		// `formElement` is this `<form>` element
-		// `formData` is its `FormData` object that's about to be submitted
+		// `formData` is its `formData` object that's about to be submitted
 		// `action` is the URL to which the form is posted
 		// calling `cancel()` will prevent the submission
 		// `submitter` is the `HTMLElement` that caused the form to be submitted

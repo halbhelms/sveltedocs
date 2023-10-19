@@ -1,1 +1,0 @@
-Inside lang folder
