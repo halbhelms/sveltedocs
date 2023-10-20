@@ -25,7 +25,7 @@ All <code>+page.svelte</code> files can declare a <code>script</code> section. W
 </p>
 
 <p class="my-2">
-But there's a better way. You can create a special JavaScript file linked to an individual <code>+page.svelte</code> file. This file is placed in the same directory as its corresponding <code>+page.svelte</code> file. It's this special file's responsibility to provide data needed by <code>+page.svelte</code>. Svelte will automatically call this file before processing <code>+page.svelte</code>. (You can also load data from <i>layout</i> files that will be available to all server files.)
+But there's a better way. You can create a special JavaScript file linked to an individual <code>+page.svelte</code> file. This file is placed in the same directory as its corresponding <code>+page.svelte</code> file. It's this special file's responsibility to provide data needed by <code>+page.svelte</code>. Svelte will automatically call this file before processing <code>+page.svelte</code>.
 </p>
 
 <p class="my-2">
@@ -84,4 +84,7 @@ On the other hand, there are restrictions and nuances to the use of <code>+page.
     <p class="pl-2">Since <code>+page.server.js</code> runs on the server, you must be cautious when importing modules. For instance, if a module relies on browser-specific APIs, it will cause errors when imported in <code>+page.server.js</code>.</p>
   </div>
 </div>
+
+<Next nextLink="page-data-layouts" nextText="Page Data: Layouts" />
+
 </main>
