@@ -21,7 +21,11 @@
       <button class="text-xs" name={link.id}>x</button>
       <div class="inline-block">{link.id}</div>
       <div class="inline-block">{link.slug}</div>
-      <div class="inline-block">{link.main_component}</div>
+      <div class="inline-block">
+        <a href="/explainers/{link.slug}" target="newwin">
+          {link.main_component}
+        </a>
+      </div>
     </div>
   {/each}
 </div>
