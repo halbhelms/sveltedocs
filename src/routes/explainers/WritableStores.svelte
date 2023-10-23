@@ -72,7 +72,7 @@ Now to make use of it. We'll start with the simplest component: <code>CartSummar
 We import the <code>cart</code> previously created in <code>index.js</code>
 </WalkThru>
 <WalkThru lineNumber="5">
-We display the number of items in the cart &mdash; that is, the <code>$cart.length</code> (The part after that just determines whether to display "item" or "items").
+We display the number of items in the cart &mdash; that is, the <code>$cart.length</code> (The part after that just determines whether to display "item" or "items"). Why the <code>$</code> prefix? A store is not the value added to it, but an object that, among other things, stores that value. Adding the <code>$</code> prefix does two things: it <em>subscribes</em> us to the store so that all components using the store will see any changes to that data, and it provides us with access to the value held by the store. A little bit of Svelte magic.
 </WalkThru>
 
 <p class="my-2">
@@ -184,4 +184,5 @@ Now, our <code>+page.svelte</code> file is a model of simplicity. It first impor
 </WalkThru>
 
 <Prev prevLink="stores" prevText="Stores" />
+<Next nextLink="readable-stores" nextText="Readable Stores" />
 </main>

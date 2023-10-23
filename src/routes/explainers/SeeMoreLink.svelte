@@ -13,7 +13,7 @@
   }
 </script>
 
-<span on:click={clickSeeMoreLink} class="inline-flex items-center hover:cursor-pointer hover:font-semibold hover:text-white bg-blue-300 text-gray-700 rounded-sm px-1 shadow-sm shadow-inner shadow-black text-xs">
-    <Icon class="mb-1" icon="fxemoji:microscope" width="20" /> 
+<span on:click={clickSeeMoreLink} class="inline-flex items-center hover:cursor-pointer hover:font-semibold hover:text-white bg-green-300 text-green-700 rounded-full px-1 shadow-sm shadow-inner shadow-black text-xs">
+    <Icon  icon="fxemoji:microscope" width="20" /> 
     {@html linkedText}
 </span>
