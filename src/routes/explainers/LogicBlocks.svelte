@@ -61,6 +61,64 @@ Used to determine display based on the truth of a condition.
 </ul> "/>
 
 <PageSubTitle subtitle="Each loops" />
+<p class="my-2">
+Used to loop over an iterable data structure.
+</p>
+
+<CodeSnippetHeader text="+page.svelte" />
+<CodeSnippet code="<script>
+  const people = [
+    &#123;id: 1, firstName: 'Darlene', lastName: 'Edwards'},
+    &#123;id: 2, firstName: 'James', lastName: 'Delmonico'},
+    &#123;id: 3, firstName: 'Hudson', lastName: 'Harper'},
+  ]  
+</script>
+
+&#123;#each people as person (person.id)}
+  <p>&#123;person.name}</p>
+&#123;/each}" />
+
+<WalkThruHeader />
+<WalkThru lineNumber="9">
+The only thing interesting to note is this snippet: <code>(person.id)</code>. This snippet is known as a <em>key</em>. It helps Svelte do certain operations and prevents some esoteric bugs. It's not mandatory &mdash; your each loop will run without it &mdash; but it's highly recommended. The key doesn't have to be an <code>id</code>; it just needs to be unique to each item in the collection.
+</WalkThru>
+
+<p class="my-2">
+We can also get how many times we've looped through the collection &mdash; the so-called <em>index</em> (although you can name it anything you choose). Remember that in JavaScript (and, by extension, Svelte) collections start with an index of <code>0</code>. (The best way we've found to explain zero-based indexing is that the index represents the position <em>away from the start of the collection</em> the current selection is.)
+</p>
+
+<CodeSnippet code="&#123;#each people as person, index (person.id)}
+  <p>&#123;index} &#123;person.name}</p>
+&#123;/each}" />
+
+<p class="my-2">
+You can provide an <code>:else</code> statement in case the collection is missing or empty.
+</p>
+
+<CodeSnippet code="&#123;#each people as person, index (person.id)}
+  <p>&#123;index} &#123;person.name}</p>
+&#123;:else}
+  <p>No collection (or empty collection) found</p>
+&#123;/each}" />
+
+<p class="my-2">
+You can also destructure portions of your collection.
+</p>
+
+<CodeSnippetHeader text="+page.svelte" />
+<CodeSnippet code="<script>
+  const people = [
+    &#123;id: 1, firstName: 'Darlene', lastName: 'Edwards'},
+    &#123;id: 2, firstName: 'James', lastName: 'Delmonico'},
+    &#123;id: 3, firstName: 'Hudson', lastName: 'Hawkins'},
+  ]
+</script>
+
+&#123;#each people as &#123; id, firstName, lastName } (id)}
+  <p>&#123;lastName}, &#123;firstName}</p>
+&#123;:else}
+  <p>No collection (or empty collection) found</p>
+&#123;/each}" />
 
 
 </main>

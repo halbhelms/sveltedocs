@@ -10,7 +10,27 @@ const user = {
   advantagePlus: false,
   advantage: true,
 }
+
+const _people = [
+      {id: 1, name: 'Darlene'},
+      {id: 2, name: 'James'},
+      {id: 3, name: 'Hudson'},
+    ]  
+
+  const people = [
+    {id: 1, firstName: 'Darlene', lastName: 'Edwards'},
+    {id: 2, firstName: 'James', lastName: 'Delmonico'},
+    {id: 3, firstName: 'Hudson', lastName: 'Hawkins'},
+  ]
 </script>
+
+{#each people as { firstName, lastName } (person.id)}
+  <p>{lastName}, {firstName}</p>
+{:else}
+  <p>No collection (or empty collection) found</p>
+{/each}
+
+
 
 <ul>
 {#if user.advantagePlus}
@@ -33,12 +53,10 @@ const user = {
 {/if}
 </ul>
 
-{#each data.people as person (person.id)}
-  <p>{person.name}</p>
-{/each}
 
 
-<!-- {data.people.forEach( person => {
+
+<!-- {data._people.forEach( person => {
   document.write(person.name)
 })} -->
 <!-- <h1>Welcome, {$company}</h1>
