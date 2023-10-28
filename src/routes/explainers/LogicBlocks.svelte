@@ -120,5 +120,34 @@ You can also destructure portions of your collection.
   <p>No collection (or empty collection) found</p>
 &#123;/each}" />
 
+<PageSubTitle subtitle="await blocks" />
+<p class="my-2">
+Normally, you wouldn't request API data from a <code>+page.svelte</code> file. Instead, you'd use something like <code>+page.server.js</code>. But...in case you need to, Svelte provides <code>await</code> blocks. Let's see one in action.
+</p>
+
+<CodeSnippetHeader text="+page.svelte" />
+<CodeSnippet code="<script>
+  async function fetchData() &#123;
+    const response = await fetch('https://api.thecatapi.com/v1/images/search?api_key=<your_api_key>')
+    return response.json()
+  }
+</script>
+
+<main>
+  &#123;#await fetchData()}
+    <p>Loading data...</p>
+  &#123;:then data}
+    &#123;#if data}
+      <h1>Here is your daily friendly cat picture</h1>
+      <img src'&#123;data[0].url}' alt='A friendly cat pic'>
+    &#123;:else}
+      <p>No cat pic for you</p>
+    &#123;/if}
+  &#123;:catch error}
+    <p>Error: &#123;error.message}</p>
+  &#123;/await}
+</main>" />
+
+
 
 </main>

@@ -1,76 +1,32 @@
-<script>
-  import Inventory from './Inventory.svelte'
-  import Cart from './Cart.svelte'
-export let data
-  import CartSummary from './CartSummary.svelte'
-  import { company, topProducers } from '../../stores/'
+<script>import MyComponent from './MyComponent.svelte'</script>
 
-const user = {
-  name: 'Noah Sweat',
-  advantagePlus: false,
-  advantage: true,
-}
+<!-- sending data via a prop -->
+<MyComponent name="Rich Harris" />
+<hr class="border-gray-400 w-1/2 border-t-2 mt-2 mb-2"/>
 
-const _people = [
-      {id: 1, name: 'Darlene'},
-      {id: 2, name: 'James'},
-      {id: 3, name: 'Hudson'},
-    ]  
-
-  const people = [
-    {id: 1, firstName: 'Darlene', lastName: 'Edwards'},
-    {id: 2, firstName: 'James', lastName: 'Delmonico'},
-    {id: 3, firstName: 'Hudson', lastName: 'Hawkins'},
-  ]
-</script>
-
-{#each people as { firstName, lastName } (person.id)}
-  <p>{lastName}, {firstName}</p>
-{:else}
-  <p>No collection (or empty collection) found</p>
-{/each}
-
-
-
+<!-- sending HTML that will be picked up with MyComponent's slot tag -->
+<MyComponent name="Rich Harris">
+<p>Rich Harris is the creator of Svelte. A few facts about the man:</p>
 <ul>
-{#if user.advantagePlus}
-  <li>dedicated customer advocate</li>
-  <li>Advantage+ exclusive deals</li>
-  <li>discount pricing</li>
-  <li>priority access</li>
-  <li>same-day shipment</li>
-  <li>30-day refund</li>
-  <li>extended warranty</li>
-{:else if user.advantage}
-  <li>discount pricing</li>
-  <li>priority access</li>
-  <li>same-day shipment</li>
-  <li>30-day refund</li>
-  <li>extended warranty</li>
-{:else}
-  <li>30-day refund</li>
-  <li>extended warranty</li>
-{/if}
+  <li>He has a background in journalism, even serving a stint at <em>The Guardian</em></li>
+  <li>He's been involved in creating other tools and libraries, like Rollup.js</li>
+  <li>Rich has a contrarian view, citing the dangers of complexity in frameworks like React and Angular</li>
 </ul>
+</MyComponent>
+<hr class="border-gray-400 w-1/2 border-t-2 mt-2 mb-2"/>
 
+<MyComponent name="Rich Harris"/>
+<hr class="border-gray-400 w-1/2 border-t-2 mt-2 mb-2"/>
 
-
-
-<!-- {data._people.forEach( person => {
-  document.write(person.name)
-})} -->
-<!-- <h1>Welcome, {$company}</h1>
-<div class="ml-8 shadow-lg w-[250px] mt-4">
-<p class="font-bold">Top Producers</p>
-<ul class="list-disc list-inside">
-  {#each $topProducers as csr}
-    <li>{csr.name}</li>
-  {/each}
-</ul>
-</div>
-
-<CartSummary />
-<div class="grid border-2 w-[700px] grid-cols-[300px_300px] gap-4 ml-8 mt-8">
-  <Inventory />
-  <Cart />
-</div> -->
+<MyComponent name="Rich Harris">
+  <p>Svelte is an amazing framework.</p>
+  <div slot="contributors">
+    <p>Major contributors include:</p>
+    <ul>
+      <li class="list-disc list-inside">Alan Faubert</li>
+      <li class="list-disc list-inside">Tan Li Hau</li>
+      <li class="list-disc list-inside">Ben McCann</li>
+      <li class="list-disc list-inside">Simon Holthausen</li>
+    </ul>
+  </div>
+</MyComponent>

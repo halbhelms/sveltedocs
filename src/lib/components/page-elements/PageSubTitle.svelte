@@ -3,7 +3,7 @@
   export let subtitle
 </script>
 
-<h1 class="w-1/2 text-2xl ml-8 mt-3"><span class="text-3xl text-bold text-indigo-500">&#167;</span> {subtitle}</h1>
+<h1 class="w-1/2 text-xl ml-8 mt-3"><span class="text-xl text-bold text-indigo-500">&#167;</span> {@html subtitle}</h1>
 
 
 <style>
