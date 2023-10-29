@@ -1,4 +1,6 @@
 <script>
+  import Screenshot from '$lib/components/page-elements/Screenshot.svelte'
+  import BrowserWindow from '$lib/components/page-elements/BrowserWindow.svelte'
   import PageTitle from '$lib/components/page-elements/PageTitle.svelte'
   import Credit from '$lib/components/page-elements/Credit.svelte'
   import ExternalResource from '$lib/components/page-elements/ExternalResource.svelte'
@@ -33,6 +35,7 @@ We'll borrow the example from the Sveltekit docs, as it's an excellent one. Look
 </p>
 
 <img src="../breaking-layouts.png" width=400 alt="breaking out of layouts">
+<!-- <Screenshot width="400px" src="../breaking-layouts.png" /> -->
 
 <p class="my-2">
 Our <code>+page.svelte</code> file &mdash; where would it get its layouts from? From <code>resources > (app) > item > id</code>. But now, let's see which layouts are inherited if we use the <code>@</code> symbol &mdash; the mechanism Sveltekit offers for breaking out of layouts.

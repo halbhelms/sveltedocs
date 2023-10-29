@@ -1,4 +1,6 @@
 <script>
+  import Screenshot from '$lib/components/page-elements/Screenshot.svelte'
+  import BrowserWindow from '$lib/components/page-elements/BrowserWindow.svelte'
   import PageTitle from '$lib/components/page-elements/PageTitle.svelte'
   import Credit from '$lib/components/page-elements/Credit.svelte'
   import ExternalResource from '$lib/components/page-elements/ExternalResource.svelte'
@@ -24,7 +26,7 @@
 <i>Slot fallbacks</i> allow us to provide default content if no content is passed to us. It's great that we have that, but there are times when that's not quite enough. Look at this:
 </p>
 
-<img src="../card-mozart.png" width="350" alt="Mozart card">
+<Screenshot src="../card-mozart.png" width="350" alt="Mozart card" />
 
 <p class="my-2">Here's the code for that:</p>
 
