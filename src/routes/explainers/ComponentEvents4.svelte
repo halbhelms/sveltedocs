@@ -35,7 +35,7 @@ The <code>+page.svelte</code> file remains the same.
 </p>
 
 <p class="my-2">
-In fact, the only thing we need to do to make child-to-granparent communication work is to call <code>CustomerChooser</code> from the <i>parent</i> like this:
+In fact, the only thing we need to do to make child-to-grandparent communication work is to call <code>CustomerChooser</code> from the <i>parent</i> like this:
 </p>
 
 <code class="my-2">&lt;CustomerChooser on:selectionChosen /></code>

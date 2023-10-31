@@ -6,7 +6,7 @@
   const dispatch = createEventDispatcher()
 
   function dispatchEvent() {
-    dispatch('SeeMoreClose')
+    dispatch('Hatem')
   }
 
   

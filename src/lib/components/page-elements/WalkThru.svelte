@@ -16,7 +16,6 @@
    <span class="bg-indigo-900 w-[38px] text-white font-mono rounded-full text-center ml-1 h-[38px]">{end}</span>
    <p class="ml-2"><slot /></p>
   </div>
-
 {/if}
 
 

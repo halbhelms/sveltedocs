@@ -73,14 +73,14 @@ Before we do a code walk-through, let's look at the child component.
 <CodeSnippet code="<script>
   // props typically send data
   export let name
-  const sadly = `No doubt ${name} either has or had an illustrious career.`
+  const sadly = `No doubt $&#123;name} either has or had an illustrious career.`
 </script>
 
 <div>
   <!-- slots display HTML from -->
   <slot>
   <!-- If nothing was passed to be used by slots, the following 'fallback', if it exists, will be shown. -->
-  Sadly, we don't have any more information about {name}. &#123;sadly}
+  Sadly, we don't have any more information about &#123;name}. &#123;sadly}
   </slot>
 
   <slot name='contributors' />
@@ -95,6 +95,7 @@ So how does this whole <em>slot</em> thing work? Parents (<code>+page.svelte</co
   &lt;h2>I'm headed off to MyComponent!&lt;/h2><br />
   &lt;ul><br />
   &nbsp; &lt;li>Me too!&lt;/li><br />
+  
   &nbsp; &lt;li>Count me in!&lt;/li><br />
   &nbsp; &lt;li>I'm right behind!&lt;/li><br />
   &lt;/ul><br />
@@ -105,7 +106,7 @@ So how does this whole <em>slot</em> thing work? Parents (<code>+page.svelte</co
 So, that's how the <em>parent</em> sends information to the child. How does the child handle it? In its simplest form, the child determines where they want to display that information and places this tag in that location:
 </p><code>&lt;slot /></code>. But slots have more tricks up their sleeve. To see that, let's do a walk-through of the parent and child code.
 
-<WalkThruHeader fileName="<code>+page.svelte</code>"/>
+<WalkThruHeader fileName="<code>+page.svelte</code>" />
 <WalkThru lineNumber="6">
 Here, a demonstration of sending a value via a <em>prop</em>. No slot info  involved. The display:
 </WalkThru>

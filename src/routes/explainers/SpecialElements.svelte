@@ -1,5 +1,9 @@
 <script>
+	import ElementDirectives from './ElementDirectives.svelte';
   import Screenshot from '$lib/components/page-elements/Screenshot.svelte'
+  import SplitRow from '$lib/components/page-elements/SplitRow.svelte'
+  import SingleRow from '$lib/components/page-elements/SingleRow.svelte'
+  import HTMLwrapper from '$lib/components/page-elements/HtmlWrapper.svelte'
   import BrowserWindow from '$lib/components/page-elements/BrowserWindow.svelte'
   import PageTitle from '$lib/components/page-elements/PageTitle.svelte'
   import Credit from '$lib/components/page-elements/Credit.svelte'
@@ -13,6 +17,7 @@
   import PageSubTitle from '$lib/components/page-elements/PageSubTitle.svelte';
   import WalkThru from '$lib/components/page-elements/WalkThru.svelte'
   import WalkThruHeader from '$lib/components/page-elements/WalkThruHeader.svelte'
+  import HtmlWrapper from '../../lib/components/page-elements/HtmlWrapper.svelte';
 
   $: seeMoreActive: false
 </script>
@@ -223,7 +228,7 @@ Let's take an example of a generic button vs. link scenario: imagine you have a 
 </script>
 
 <svelte:element 
-  this= &#123;useLink ? 'a' : 'button'} 
+  this=&#123;useLink ? 'a' : 'button'} 
   href=&#123;useLink ? href : undefined} 
   on:click=&#123;() => alert('Clicked!')} 
   class:border-black=&#123;!useLink} 
@@ -247,4 +252,72 @@ The <code>text</code> prop will be placed either on the button or between the li
 In the calling page, you can call it as a button with: <code>&lt;ButtonOrLink text="Click moi" /></code> or as a link with <code>&lt;ButtonOrLink useLink={true} href="/some-page" text="Visit Page" /></code>
 </p>
 
+<PageSubTitle subtitle="svelte:window" />
+<p class="my-2">
+If you need to apply event listeners to the <code>window</code> object, use <code>&lt;svelte-window on:<em>event</em>=&#123;<em>eventHandler</em>}</code>. If you do use it, it must appear at the top level of your component and must never be inside a block or element.
+</p>
+
+<PageSubTitle subtitle="svelte:document" />
+<p class="my-2">
+Similar to <code>svelte:window</code> but for <code>document</code>. BIG NOTE: You can apply actions to <code>svelte:document</code>. Same restrictions on placement as for <code>svelte:window</code> apply.
+</p>
+
+<PageSubTitle subtitle="svelte:body" />
+<p class="my-2">
+Same everything as <code>svelte:document</code> but for the DOM element, <code>body</code>.
+</p>
+
+<PageSubTitle subtitle="svelte:head" />
+<p class="my-2">
+Allows you to insert elements into <code>document.head</code>. Same restrictions for location replacement as <code>svelte:window</code> apply.
+</p>
+
+<PageSubTitle subtitle="svelte:options" />
+<p class="my-2">
+This lets you make <em>per-component</em> changes to compiler options.
+</p>
+
+
+<SplitRow>
+  <HtmlWrapper htmlContent='<code>immutable</code>' slot='left' />
+
+  <div slot="right-top">
+    &#123;true} : if you never use mutable data, the compiler can do simple referential equality checks to determine if values have changed
+  </div>
+  <div slot="right-bottom">
+    &#123;false} :  the default. Svelte will be more conservative about whether or not mutable objects have changed
+  </div>
+</SplitRow>
+
+<SplitRow>
+  <HTMLwrapper htmlContent='<code>accessors</code>' slot='left' />
+  <div slot="right-top">
+    &#123;true} : adds getters and setters for the component's props
+  </div>
+ 
+  <div slot='right-bottom'>
+    &#123;false} : the default
+  </div>
+</SplitRow>
+
+<SingleRow>
+  <HTMLwrapper htmlContent="<code>namespace='...'</code>" slot="left" />
+  <div slot="right">
+    the namespace where this component will be used, most commonly "svg"; use the "foreign" namespace to opt out of case-insensitive attribute names and HTML-specific warnings
+  </div>
+</SingleRow>
+
+<SingleRow>
+  <HTMLwrapper htmlContent="<code>customElement='...'</code>" slot="left" />
+  <div slot="right">
+    the name to use when compiling this component as a custom element
+  </div>
+</SingleRow>
+
+<div class="border-t-2 border-gray-300 ml-8 w-[80%]" />
+
+<PageSubTitle subtitle="svelte:fragment" />
+<p class="my-2">
+This element is useful when working with <em>named slots</em>. Instead of wrapping something in a DOM element (div, p, <em>etc.</em>) that might affect the visual look of your page, you can use <code>svelte:fragment</code>, which has no corresponding DOM element to interfere with normal page layout.
+</p>
 </main>
