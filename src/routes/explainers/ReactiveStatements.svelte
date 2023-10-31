@@ -37,12 +37,42 @@ Until it isn't...
 </p>
 
 <p class="my-2">
-But let's not start off by borrowing trouble: for now, let's stay in magic land. The following discussion revolves around some <em>reactive assignments</em> that we've placed in a <code>+page.svelte</code> file:
-</p>
+But let's not start off by borrowing trouble: for now, let's stay in magic land. Why, we've even got some magic code!
 
 <CodeSnippetHeader text="+page.svelte" />
 <CodeSnippet code="<script>
   let count = 0
+  function handleClick() &#123; count++ }
+</script>
+
+<button on:click=&#123;handleClick}>Increment count</button><br />
+
+Count: &#123;count}" />
+
+
+<p class="my-2">
+Let's take this nice and slow so that we fully understand how Svelte reactivity works.
+</p>
+
+<WalkThruHeader />
+<WalkThru lineNumber="2">
+A variable, <code>count</code>, is set to <code>0</code>. Because of the <code>let</code> keyword, it is reactive &mdash; that is, anything that relies on <code>count</code> or displays <code>count</code> will change if <code>count</code> changes. That's all you have to do to make an assignment reactive.
+</WalkThru>
+
+<WalkThru lineNumber="6">
+Click a button, call the function, <code>handleClick</code> that increments the reactive variable, <code>count</code>. But is it reactive <em>really</em>? Sure, of course it is.
+</WalkThru>
+
+<WalkThru lineNumber="8">
+Click the button and you'll see the count change before your very eyes. "Ah!," you'll say. "That's probably working only because 'count' is a number!" No, the magic trick works whether it's a number, a string, a boolean, an object, an array &mdash; you get the point.
+</WalkThru>
+
+<p class="my-2">
+I can tell by the look in your eyes, you don't believe me. Fine, I'll prove it to you.
+</p>
+
+<CodeSnippetHeader text="+svelte.page" />
+<CodeSnippet code="<script>
   let obj = &#123;
     name: undefined,
     address: &#123;
@@ -50,44 +80,42 @@ But let's not start off by borrowing trouble: for now, let's stay in magic land.
       state: undefined
     }
   }
-  let arr = [0,1,2]
-  let lastNum = arr[arr.length-1]
-  let myCity = obj.address.city
 
-  function handleClick() &#123; count++ }
-  function addToArray() &#123; arr = [...arr, arr[arr.length-1] + 1] }
   function setCity(city) &#123; obj.address.city = city }
   function setState(state) &#123; obj.address.state = state }
-  function setName(name) &#123; obj.name = name }
 </script>
 
-<button on:click=&#123;handleClick}>Increment count</button><br />
-<button on:click=&#123;addToArray}>Add to array</button><br />
-<button on:click=&#123;() => setName('Joe')}>Set name to Joe</button><br />
 <button on:click=&#123;() => setCity('Las Vegas')}>Set city to Las Vegas</button><br />
-<button on:click=&#123;() => setState('Nevada')}>Set state to Nevada</button><br />
-<br />
-<div>
-Count: &#123;count}<br />
-Array: &#123;arr}<br />
-Obj.name:&#123;obj.name}<br />
-Obj.address.city: &#123;obj.address.city}<br />
-Obj.address.state: &#123;obj.address.state}<br />
-Last num: &#123;lastNum}<br />
-My city: &#123;obj.address.city}
-</div>" />
+<button on:click=&#123;() => setState('Nevada')}>Set state to Nevada</button><br /><br />
 
-<p class="my-2">
-Let's take this nice and slow so that we fully understand how Svelte reactivity works.
-</p>
+Obj.address.city: &#123;obj.address.city}<br />
+Obj.address.state: &#123;obj.address.state}<br />" />
 
 <WalkThruHeader />
-<WalkThru lineNumber="">
-
+<WalkThru lineNumber="2">
+Not a simple number this time, but a slightly complex object.
 </WalkThru>
 
+<WalkThru lineNumber="10">
+Changes the value of <code>city</code> based on what's passed to this function
+</WalkThru>
 
+<WalkThru lineNumber="11">
+Changes the value of <code>state</code> based on what's passed to this function
+</WalkThru>
 
+<WalkThru lineNumber="14" end="15">
+Click either button and the value of <code>obj.address.city</code> or <code>obj.address.state</code> will change.
+</WalkThru>
 
+<WalkThru lineNumber="17" end="18">
+Since <code>obj</code> is reactive, the display that relies on the value of <code>obj</code> will change to match <code>obj</code>'s new value.'
+</WalkThru>
+
+<p class="my-2">
+Time for a plot twist...Click for next.
+</p>
+
+<Next nextLink="reactive-statements-2" nextText="Reactivity Plot Twist" />
 
 </main>
