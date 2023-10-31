@@ -139,5 +139,7 @@ In Svelte, when you change these simple values directly, the framework notices t
 <p>It's about how Svelte observes changes, and while it can see direct assignments or modifications to simple values, it requires more explicit changes for arrays or objects.</p>
 </Details>
 
+<Prev prevLink="reactive-statements" prevText="Reactive Assignments" />
+<Next nextLink="reactive-statements-3" nextText="Reactive Statements" />
 
 </main>

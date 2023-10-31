@@ -15,7 +15,7 @@
   $: seeMoreActive: false
 </script>
 
-<PageTitle title="Reactive Statements" />
+<PageTitle title="Reactive Assignments" />
 <main class="md:mx-4 sm:mx-2">
 
 <p class="first-line:uppercase first-line:tracking-wide first-line:text-xs
