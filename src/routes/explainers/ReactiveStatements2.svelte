@@ -112,7 +112,7 @@ And to explain that, I'm afraid I have to go into ALWE (Another Long-Winded Expl
 <Details>
 <p>Imagine two scenarios:</p>
 
-<ol class="list-decimal">
+<ol class="list-decimal list-inside">
   <li>You have a chalkboard with a number written on it.</li>
   <li>You have a box filled with toys.</li>
 </ol>
@@ -125,7 +125,7 @@ In Svelte, when you change these simple values directly, the framework notices t
 <h2 class="font-bold text-xl">Box of Toys (Arrays or Objects)</h2>
 <p>Now, consider the array situation as having a box filled with toys (or numbers, in the case of the <code>arr</code> example we gave). If you decide to add a toy to the box, the box itself remains the same box; you've only changed its contents.</p>
 
-<p>n programming terms, by using methods like <code>push</code>, you're modifying the content inside the array but not the array reference itself. So, Svelte, like people observing the box, doesn't notice that change right away because the box (the array reference) remains the same.</p>
+<p>In programming terms, by using methods like <code>push</code>, you're modifying the content inside the array but not the array reference itself. So, Svelte, like people observing the box, doesn't notice that change right away because the box (the array reference) remains the same.</p>
 
 <p>To get Svelte's attention, you'd have to replace the box with a new one or in programming terms, create a new array. For instance, you'd spread out the old array into a new one and add a value: <code>arr = [...arr, newValue]</code>.</p>
 

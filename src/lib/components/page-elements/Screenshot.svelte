@@ -10,17 +10,21 @@
 
 <div class="browser-window">
   <div class="title-bar">SvelteInfo.com Browser</div>
-  <div class="address-bar">http://www.svelteinfo.com</div>
+  <div class="address-bar text-xs">http://www.svelteinfo.com</div>
   <div class="browser-content">
     <!-- Your content goes here -->
-    <img src={src} width={width} alt="">
+      <slot />
   </div>
 </div>
 
 <style>
+
+  .overlay {
+    @apply inset-0 bg-transparent cursor-not-allowed;
+  }
   .browser-window {
     display: inline-block;
-      min-width: 50%;
+      min-width: 30%;
       max-width: 80%;
       margin: auto;
       border: 3px solid #ccc;
