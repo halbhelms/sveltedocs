@@ -71,6 +71,10 @@ Use <code>input:bind</code> to bind the values of the input fields to the approp
 </WalkThru>
 
 <p class="my-2">
+That's all there is to it. If your user navigates away and then returns, their info is still there.
+</p>
+
+<p class="my-2">
 Now, for the not-so-good news: this works when you place your capture in a <code>+page.svelte</code> or a <code>+layout.svelte</code> file. If, like us, you prefer to have forms as separate components, you'll have to fashion your own mechanism for snapshotting. Not all that difficult, but not as easy as if you stay with the restrictions imposed by SvelteKit.
 </p>
 
