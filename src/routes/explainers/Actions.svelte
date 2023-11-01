@@ -25,7 +25,63 @@ Actions (not to be confused with <SeeMoreLink linkedText="Form actions" /> ) are
 </p>
 
 <p class="my-2">
-Actions are very useful when you want to keep your components clean and don't want to clutter them with repetitive code. Let's create a sample "Scroll to Top" action on a paragraph. We'll create the action in a separate file:
+This "action function" is called immediately after the HTML element utilizing the action is mounted on the DOM. Let's look at the structure of a very simple action &mdash; then we'll look at an actual, useful one.
+</p>
+
+<CodeSnippetHeader text="+page.svelte" />
+<CodeSnippet code="&lt;script>
+    function colorMeRed(node, params) &#123;
+    node.style.color = 'red'
+  }
+</script>
+
+<h2 use:colorMeRed style='color:green'>I am not red...</h2>" />
+
+<WalkThruHeader />
+<WalkThru lineNumber="7">
+The <code>h2</code> tag includes <code>use:colorMeRed</code> &mdash; meaning that the <code>colorMeRed</code> function, defined earlier, will be called as soon as the protestations of the <code>h2</code> tag is seen. In other words, you only <em>think</em> you're not red, Mr. H2.
+</WalkThru>
+
+<WalkThru lineNumber="2">
+Any action function you create receives two parameters: <code>node</code>, the HTML element from which the action executes and another one, <code>params</code>. More on <code>params</code> shortly...
+</WalkThru>
+
+<WalkThru lineNumber="3">
+Now, we turn the color of the text of the <code>h2</code> tag to red.
+</WalkThru>
+
+<p class="my-2">
+Now, this is an admittedly <em>bad</em> example of an action, but we wanted to keep it so simple that the actual behavior of the action (which can be quite complex) wasn't a distraction. But let's get back to that second parameter, <code>params</code>.
+</p>
+
+<p class="my-2">
+You can, at your discretion, pass to an action an argument to be received by the action function. We've labeled that parameter, <code>params</code>. The argument passed can be of any data type. Let's see it in use, passing an object. And we'll change our action slightly to accomodate the passed argument.
+</p>
+
+<CodeSnippetHeader text="+page.svelte" />
+<CodeSnippet code="<script>
+  function colorMe(node, params) &#123;
+    node.style.color = params.desiredColor
+  }
+</script>
+
+<h2 use:colorMe=&#123;&#123;desiredColor: 'green'}}>I wish I was green</h2>" />
+
+<WalkThruHeader />
+<WalkThru lineNumber="2">
+We've changed the name of our function to indicate that we're taking no stance on which color to change the node text to.
+</WalkThru>
+
+<WalkThru lineNumber="3">
+Now, we'll set the text color of <code>node</code> based on the <code>desiredColor</code> passed in.
+</WalkThru>
+
+<WalkThru lineNumber="7">
+This is how we pass in <code>params</code> &mdash; in this case, an object with a property of <code>desiredColor</code>. And while this is a silly example, there is one important thing to note: we have created an action that could be used on multiple HTML elements, each one declaring the color they wish to be. We could expand this idea and have a separate JavaScript file with multiple available actions that are exported. Then, in our various <code>+page.svelte</code> files, we can import the desired actions and use them.
+</WalkThru>
+
+<p class="my-2">
+Actions are very useful when you want to keep your components clean and don't want to clutter them with repetitive code. Let's create a more useful "Scroll to Top" action. We'll attach it to an HTML element that, when clicked, will scroll the focus to the top of the page. We'll create that action in a separate file:
 </p>
 
 <CodeSnippetHeader text="scrollToTop.js" />
@@ -48,8 +104,13 @@ Actions are very useful when you want to keep your components clean and don't wa
 <WalkThru lineNumber="1">
 The <code>node</code> parameter is the HTML element that uses the action.
 </WalkThru>
+
+<WalkThru lineNumber="2">
+The behavior we want &mdash; click to scroll to top &mdash; requires an event listener. Of course, we could make add an <code>on:click=&#123;scrollToTop}</code> to the HTML element, writing a separate <code>scrollToTop</code> function, but placing this code in an action lets us re-implement this functionality in a variety of pages in a simple way.
+</WalkThru>
+
 <WalkThru lineNumber="7">
-An optional cleanup function is available (and needed for this example).
+An optional <code>destroy</code> function is available for doing cleanup when the element is removed from the DOM (and needed for this example).
 </WalkThru>
 
 <p class="my-2">

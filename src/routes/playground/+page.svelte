@@ -7,8 +7,13 @@
     capture: () => zipcode,
     restore: (value) => zipcode = value
   }
+
+  function colorMe(node, params) {
+    node.style.color = params.desiredColor
+  }
 </script>
 
+<h2 use:colorMe={{desiredColor: 'green'}}>I wish I was green</h2>
 
 
 <Screenshot>
