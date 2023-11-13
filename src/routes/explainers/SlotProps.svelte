@@ -60,7 +60,7 @@ Let's first look at a component called <code>AuthorList</code>.
 We start off with the component...having an array of authors? Is that really a component's job to have this kind of data hard-coded? Well, since you put it that way...No. But! we did indicate this was a highly contrived example. Just go with it.
 </WalkThru>
 <WalkThru lineNumber="13">
-Here's where things start to get confusing. We loop over the (misplaced) <code>authors</code> array. The weird concatenation of first and last names is there to provide a key for the loop. Normally, we'd use something like an id, but here, we just need some value that's unique for each row.
+Here's where things start to get confusing. We loop over the (misplaced) <code>authors</code> array. The weird concatenation of first and last names is there to provide a key for the loop. Normally, we'd use something like an <code>id</code>, but here, we just need some value that's unique for each row.
 </WalkThru>
 <WalkThru lineNumber="15">
 Inside the loop, we have a &mdash; what do you call it? That's right. Thank you. It's a <i>named slot</i>.

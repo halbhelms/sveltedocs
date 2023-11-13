@@ -1,5 +1,6 @@
 <script>
   import { enhance } from '$app/forms'
+  import PageTitle from '../playground/PageTitle.svelte'
   export let form
   function removeMessage(message) {
     form.fail[message] = ''

@@ -1,34 +1,20 @@
 <script>
-  import Screenshot from '$lib/components/page-elements/Screenshot.svelte'
-  let verificationCode
-  let zipcode
-
-  export const snapshot = {
-    capture: () => zipcode,
-    restore: (value) => zipcode = value
-  }
-
-  function colorMe(node, params) {
-    node.style.color = params.desiredColor
-  }
+  import PageTitle from './PageTitle.svelte'
+  import SeeMoreTitle from '$lib/components/see-mores/SeeMoreTitle.svelte'
+  import LWE from '$lib/components/page-elements/LongWindedExplanation.svelte'
 </script>
 
-<h2 use:colorMe={{desiredColor: 'green'}}>I wish I was green</h2>
+<!-- HTML -->
+<PageTitle title="My Big Svelte Page" />
 
+<SeeMoreTitle title="Svelte Actions"  />
 
-<Screenshot>
-  <p class="my-2">
-    <input bind:value={zipcode} placeholder='Zip code' /><br />
-    <input bind:value={verificationCode} placeholder='Verification code' /> <br />
+<LWE>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores eligendi ut omnis impedit sequi, sint, atque temporibus ipsum, natus neque illum aliquam molestiae aperiam. Facere laborum alias reiciendis blanditiis iste.</p>
 
-<a href={null} class="ml-[28px] mt-8">Click here to get a verification code</a>
-  </p>
-</Screenshot>
+  <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae dolorem dignissimos perspiciatis, blanditiis animi eveniet iste consequuntur ipsam repellendus molestias nesciunt error soluta maiores quod, at ipsum non, a qui! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate dolores voluptas ab, recusandae id eligendi illum eaque tempore nihil optio aliquid rem itaque reprehenderit nesciunt fugit animi architecto dolorem obcaecati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere exercitationem possimus nobis corporis. Tenetur quas sit distinctio similique, sed dolorem tempora voluptates molestiae officia beatae provident suscipit, corrupti consectetur repellendus.</h1>
+</LWE>
 
 <style>
-  input {
-    border: 1px solid grey;
-    margin-top: 28px;
-    margin-left: 28px;
-  }
+
 </style>

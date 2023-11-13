@@ -30,9 +30,9 @@ This "action function" is called immediately after the HTML element utilizing th
 
 <CodeSnippetHeader text="+page.svelte" />
 <CodeSnippet code="&lt;script>
-    function colorMeRed(node, params) &#123;
-    node.style.color = 'red'
-  }
+  function colorMeRed(node, params) &#123;
+  node.style.color = 'red'
+}
 </script>
 
 <h2 use:colorMeRed style='color:green'>I am not red...</h2>" />
